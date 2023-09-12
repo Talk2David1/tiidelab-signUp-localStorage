@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sign Up Form</title>
+  </head>
+  <body>
+    <h2>User Sign Up Form</h2>
+    <form id="userSignUpForm">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" required /><br /><br />
+
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" required /><br /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required /><br /><br />
+
+      <label for="number">Phone Number:</label>
+      <input type="phone" id="phone" required /><br /><br />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" required /><br /><br />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      // Form submission handler
+      const form = document.getElementById("userSignUpForm");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert("Sign Up Successful");
+        const firstName = document.getElementById("firstName").value;
+        const lastName = document.getElementById("lastName").value;
+        const email = document.getElementById("email").value;
+        const phoneNumber = document.getElementById("phone").value;
+        const password = document.getElementById("password").value;
+
+        let people = [
+          {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            phoneNumber: phoneNumber,
+            password: password,
+          },
+        ];
+
+        localStorage.setItem("users", JSON.stringify(people));
+
+        // Clear the form
+        form.reset();
+      });
+    </script>
+  </body>
+</html>
